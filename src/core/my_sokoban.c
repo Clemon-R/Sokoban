@@ -5,7 +5,7 @@
 ** Login   <raphael.goulmot@epitech.net>
 ** 
 ** Started on  Thu Dec  8 09:25:42 2016 Raphaël Goulmot
-** Last update Thu Dec 15 13:38:28 2016 Raphaël Goulmot
+** Last update Thu Dec 15 14:43:32 2016 Raphaël Goulmot
 */
 
 #include "sokoban.h"
@@ -22,9 +22,13 @@ void	new_win(t_map *map)
   int	i;
   char	c[2];
 
-  if (!check_map(map))
-    my_putstr_err("Error map size !");
   clear();
+  if (!check_map(map))
+    {
+      move((LINES - 1) / 2, (COLS - 38) / 2);
+      printw("Terminal is too small, please resize !");
+      return;
+    }
   len = 0;
   i = 0;
   c[1] = '\0';
