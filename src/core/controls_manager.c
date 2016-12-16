@@ -5,7 +5,7 @@
 ** Login   <raphael.goulmot@epitech.net>
 ** 
 ** Started on  Tue Dec 13 10:26:37 2016 Raphaël Goulmot
-** Last update Thu Dec 15 14:22:24 2016 Raphaël Goulmot
+** Last update Fri Dec 16 14:21:40 2016 Raphaël Goulmot
 */
 
 #include "sokoban.h"
@@ -17,10 +17,10 @@
 
 void	controls(t_map	*map, int key)
 {
-  if (key == 65 || key == 66)
-    move_p(map, key == 65, map->width + 1);
-  else if (key == 68 || key == 67)
-    move_p(map, key == 68, 1);
+  if (key == KEY_UP || key == KEY_DOWN)
+    move_p(map, key == KEY_UP, map->width + 1);
+  else if (key == KEY_LEFT || key == KEY_RIGHT)
+    move_p(map, key == KEY_LEFT, 1);
 }
 
 void	my_swap(t_map *map, int i1, int i2)

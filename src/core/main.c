@@ -5,7 +5,7 @@
 ** Login   <raphael.goulmot@epitech.net>
 ** 
 ** Started on  Tue Nov 29 16:01:44 2016 Raphaël Goulmot
-** Last update Thu Dec 15 14:45:23 2016 Raphaël Goulmot
+** Last update Fri Dec 16 14:11:17 2016 Raphaël Goulmot
 */
 
 #include "utils.h"
@@ -26,6 +26,6 @@ int	main(int argc, char **argv)
     my_putstr(", 'X' for boxes and 'O' for storage locations.\n");
   }
   else
-    my_sokoban(argv[1]);
+    my_sokoban(argv[1], 0);
   return (0);
 }

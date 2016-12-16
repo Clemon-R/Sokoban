@@ -5,7 +5,7 @@
 ** Login   <raphael.goulmot@epitech.net>
 ** 
 ** Started on  Thu Dec  8 09:25:42 2016 Raphaël Goulmot
-** Last update Thu Dec 15 14:43:32 2016 Raphaël Goulmot
+** Last update Fri Dec 16 14:22:22 2016 Raphaël Goulmot
 */
 
 #include "sokoban.h"
@@ -43,28 +43,30 @@ void	new_win(t_map *map)
   refresh();
 }
 
-void	my_sokoban(char *path)
+void	my_sokoban(char *path, char reset)
 {
   int	fid;
-  char	buff[1000];
+  char	buff[4097];
   int	len;
   int	key;
   t_map	*map;
 
   fid = open(path, O_RDONLY);
-  if (fid < 0 || (len = read(fid, buff, 999)) == 0)
+  if (fid < 0 || (len = read(fid, buff, 4096)) == 0)
     my_putstr_err("File error !\n");
   buff[len] = '\0';
-  initscr();
+  if (!reset)
+    initscr();
   map = create_map(buff);
   new_win(map);
-  cbreak();
+  keypad(stdscr, 1);
+    cbreak();
   curs_set(0);
-  while ((key = getch()) != ' ')
+  while ((key = getch()) != 27 && key != ' ')
     {
       controls(map, key);
       new_win(map);
     }
-  endwin();
+  (key == ' ' ? my_sokoban(path, 1) : endwin());
   close(fid);
 }

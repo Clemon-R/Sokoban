@@ -5,7 +5,7 @@
 ** Login   <raphael.goulmot@epitech.net>
 ** 
 ** Started on  Thu Dec  8 10:14:02 2016 Raphaël Goulmot
-** Last update Thu Dec 15 13:50:37 2016 Raphaël Goulmot
+** Last update Fri Dec 16 14:11:02 2016 Raphaël Goulmot
 */
 
 #ifndef SOKOBAN_H_
@@ -15,7 +15,7 @@
 
 void	controls(t_map *, int);
 void	new_win(t_map *);
-void	my_sokoban(char *);
+void	my_sokoban(char *, char);
 void	my_swap(t_map *, int, int);
 void	move_p(t_map *, char, int);
 void	rev_trigger(t_map *, int, char);
