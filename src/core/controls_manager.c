@@ -5,7 +5,7 @@
 ** Login   <raphael.goulmot@epitech.net>
 ** 
 ** Started on  Tue Dec 13 10:26:37 2016 Raphaël Goulmot
-** Last update Fri Dec 16 14:21:40 2016 Raphaël Goulmot
+** Last update Fri Dec 16 17:40:56 2016 Raphaël Goulmot
 */
 
 #include "sokoban.h"
@@ -21,6 +21,7 @@ void	controls(t_map	*map, int key)
     move_p(map, key == KEY_UP, map->width + 1);
   else if (key == KEY_LEFT || key == KEY_RIGHT)
     move_p(map, key == KEY_LEFT, 1);
+  game_win(map);
 }
 
 void	my_swap(t_map *map, int i1, int i2)
@@ -47,6 +48,7 @@ void	move_p(t_map *map, char dir, int value)
 	  rev_trigger(map, pos, 0);
 	  my_swap(map, map->posP, pos);
 	  rev_trigger(map, map->posP, 1);
+	  map->posP = pos;
 	}
       else if (map->data[pos] == 'X' && box <= my_strlen(map->data)
 	       && map->data[box] != '#')
@@ -55,9 +57,8 @@ void	move_p(t_map *map, char dir, int value)
 	  my_swap(map, pos, box);
 	  my_swap(map, map->posP, pos);
 	  rev_trigger(map, box + (dir ? value * 2 : -value * 2) , 1);
+	  map->posP = pos;
 	}
-      map->posP = pos;
-      game_win(map);
     }
 }
 
