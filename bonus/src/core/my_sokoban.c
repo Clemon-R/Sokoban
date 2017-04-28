@@ -5,7 +5,7 @@
 ** Login   <raphael.goulmot@epitech.net>
 ** 
 ** Started on  Thu Dec  8 09:25:42 2016 Raphaël Goulmot
-** Last update Tue Dec 20 13:54:20 2016 Raphaël Goulmot
+** Last update Tue Mar  7 00:33:01 2017 Raphaël Goulmot
 */
 
 #include "sokoban.h"
@@ -47,7 +47,7 @@ void	new_win(t_map *map, char win)
     return;
   len = 0;
   i = 0;
-  c[1] = '\0';
+  c[1] = 0;
   move((LINES - map->height) / 2, (COLS - map->width) / 2);
   while (map->data[i])
     {
